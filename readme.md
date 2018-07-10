@@ -97,11 +97,11 @@ This project contains an implementation of forward-chaining and backward-chainin
 
 #### data/plants.js
 
-A knowledge-base consisting of traits and classifications for plants.
+A [knowledge-base](data/plants.js) consisting of traits and classifications for plants.
 
 #### data/etfs.js
 
-A knowledge-base consisting of classes and categories for selecting a stock/bond percentage based upon risk tolerance.
+A [knowledge-base](data/etfs.js) consisting of classes and categories for selecting a stock/bond percentage based upon risk tolerance.
 
 ## License
 
