@@ -1,5 +1,5 @@
 const readline = require('readline-sync');
-const kb = require('./data/etfs.js');
+const kb = require('./data/plants.js');
 
 const forwardChain = function(assertions) {
   // Select the first rule.
@@ -34,9 +34,10 @@ const forwardChain = function(assertions) {
 const backChain = function(goal, assertions) {
   // Select the first rule.
   let ruleIndex = 0;
+  // Start with a single assertion of the goal.
   assertions = assertions || [ goal ];
 
-  // If there is an assertion with goal as its attribute.
+  // If there is an assertion with the current goal as its attribute, select it.
   let assertion = assertions.filter(assertion => assertion.attribute === goal.attribute && assertion.value);
   assertion = assertion.length ? assertion[0] : null;
 
@@ -59,21 +60,24 @@ const backChain = function(goal, assertions) {
           trueAssertion = backChain(nextGoal, assertions);
 
           // Add the assertion to the assertion list.
-          assertions.push(trueAssertion);
+          trueAssertion && assertions.push(trueAssertion);
 
           // Is the trueAssertion equal to the premise?
           isPremiseAssertionTrue = JSON.stringify(premise) === JSON.stringify(trueAssertion);
           if (isPremiseAssertionTrue) {
+            // If there are more premises to satisfy, continue to the next one.
             if (++premiseIndex < rule.premises.length) {
               premise = rule.premises[premiseIndex];
             }
             else {
+              // All premises are satisfied, the current rule triggers.
               allPremisesTrue = true;
             }
           }
         }
 
         if (allPremisesTrue) {
+          // Trigger the current rule and include its conclusion as a true assertion.
           assertion = rule.conclusion;
         }
       }
@@ -83,24 +87,13 @@ const backChain = function(goal, assertions) {
     }
 
     if (!assertion) {
-      // Use an existing assertion if it exists, otherwise prompt for assertion value from user.
-      let existingAssertion = assertions.filter(a => a.attribute === goal.attribute);
-      existingAssertion = existingAssertion.length ? existingAssertion[0] : null;
-      if (existingAssertion) {
-        assertion = existingAssertion;
-      }
-      else {
+      // We can't deduce a value for this goal. If the goal is not the original query, prompt the user for a value.
+      if (!assertions.filter(a => a.attribute === goal.attribute && !a.value).length) {
         // Prompt user for goal.
         const value = readline.question(`What is the value for ${goal.attribute}? `);
         assertion = { attribute: goal.attribute, value }; // Enter new assertion for the type and value specified by the user.
       }
     }
-    /*else {
-      const index = assertions.indexOf(a => a.attribute === assertion.attribute && !a.value);
-      if (index > -1) {
-        assertions[index].value = assertion.value;
-      }
-    }*/
   }
 
   return assertion;
@@ -133,7 +126,7 @@ console.log(assertions);
 let goal = { attribute: readline.question('What attribute type do you want to know? ') };
 assertion = backChain(goal);
 
-if (assertion.value) {
+if (assertion) {
   console.log(assertion.value);
 }
 else {
