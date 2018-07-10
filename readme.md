@@ -5,7 +5,10 @@ This project is an example of building an expert system, using a knowledge-base 
 
 ## Usage
 
-`node app.js`
+```bash
+npm install
+node app.js
+```
 
 ### First Example
 
