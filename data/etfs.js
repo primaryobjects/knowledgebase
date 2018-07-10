@@ -1,148 +1,77 @@
 const KB = [
   {
     premises: [
-      'risk tolerance is high',
-      'preference is stocks',
-      'preference is technology',
-      'preference is dividends'
+      { attribute: 'class', value: 'bond' },
+      { attribute: 'category', value: 'treasury' },
+      { attribute: 'risk', value: 'low' },
+      { attribute: 'dividend', value: 'yes' }
     ],
-    conclusion: 'VYM'
+    conclusion: { attribute: 'fund', value: 'BND' }
   },
   {
     premises: [
-      'risk tolerance is high',
-      'preference is stocks',
-      'preference is technology'
+      { attribute: 'class', value: 'bond' },
+      { attribute: 'category', value: 'treasury' },
+      { attribute: 'risk', value: 'high' },
+      { attribute: 'dividend', value: 'yes' }
     ],
-    conclusion: 'QQQ'
+    conclusion: { attribute: 'fund', value: 'JNK' }
   },
   {
     premises: [
-      'risk tolerance is high',
-      'preference is stocks',
-      'preference is dividends'
+      { attribute: 'class', value: 'bond' },
+      { attribute: 'risk', value: 'low' },
+      { attribute: 'dividend', value: 'yes' }
     ],
-    conclusion: 'DVY'
+    conclusion: { attribute: 'fund', value: 'MUB' }
   },
   {
     premises: [
-      'risk tolerance is high',
-      'preference is stocks',
+      { attribute: 'class', value: 'bond' },
+      { attribute: 'category', value: 'municipal' },
+      { attribute: 'risk', value: 'low' },
+      { attribute: 'dividend', value: 'yes' }
     ],
-    conclusion: 'SPY'
+    conclusion: { attribute: 'fund', value: 'HYD' }
   },
   {
     premises: [
-      'risk tolerance is moderate',
-      'preference is stocks',
-      'preference is dividends'
+      { attribute: 'class', value: 'stock' },
+      { attribute: 'category', value: 'large blend' },
+      { attribute: 'risk', value: 'high' },
+      { attribute: 'size', value: 'large' },
+      { attribute: 'valuation', value: 'blend' }
     ],
-    conclusion: 'SDY'
+    conclusion: { attribute: 'fund', value: 'SPY' }
   },
   {
     premises: [
-      'risk tolerance is moderate',
-      'preference is stocks'
+      { attribute: 'class', value: 'stock' },
+      { attribute: 'category', value: 'large value' },
+      { attribute: 'risk', value: 'moderate' },
+      { attribute: 'size', value: 'large' },
+      { attribute: 'valuation', value: 'value' }
     ],
-    conclusion: 'VTI'
+    conclusion: { attribute: 'fund', value: 'SDY' }
   },
   {
     premises: [
-      'risk tolerance is high',
-      'preference is bonds',
-      'preference is dividends',
-      'tax efficiency'
+      { attribute: 'fund', value: 'MUB' }
     ],
-    conclusion: 'HYD'
+    conclusion: { attribute: 'tolerance', value: 'low' }
   },
   {
     premises: [
-      'risk tolerance is high',
-      'preference is bonds',
-      'preference is dividends'
+      { attribute: 'fund', value: 'MUB' }
     ],
-    conclusion: 'TLT'
+    conclusion: { attribute: 'category', value: 'municipal' }
   },
   {
     premises: [
-      'risk tolerance is moderate',
-      'preference is bonds',
-      'preference is dividends'
+      { attribute: 'fund', value: 'SPY' }
     ],
-    conclusion: 'JNK'
-  },
-  {
-    premises: [
-      'risk tolerance is low',
-      'preference is bonds',
-      'tax efficiency'
-    ],
-    conclusion: 'MUB'
-  },
-  {
-    premises: [
-      'risk tolerance is low',
-      'preference is bonds'
-    ],
-    conclusion: 'BND'
-  },
-  /*{
-    premises: [
-      'risk tolerance is moderate',
-      'VTI'
-    ],
-    conclusion: 'BND'
-  },
-  {
-    premises: [
-      'risk tolerance is moderate',
-      'BND'
-    ],
-    conclusion: 'VTI'
-  },
-  {
-    premises: [
-      'QQQ'
-    ],
-    conclusion: 'preference is technology'
-  },
-  {
-    premises: [
-      'VYM'
-    ],
-    conclusion: 'preference is dividends'
-  },
-  {
-    premises: [
-      'JNK'
-    ],
-    conclusion: 'preference is dividends'
-  },
-  {
-    premises: [
-      'MUB'
-    ],
-    conclusion: 'tax efficiency'
-  },
-  {
-    premises: [
-      'HYD'
-    ],
-    conclusion: 'tax efficiency'
-  },
-  {
-    premises: [
-      'BND'
-    ],
-    conclusion: 'preference is bonds'
-  },
-  {
-    premises: [
-      'VTI',
-      'BND'
-    ],
-    conclusion: 'risk tolerence is moderate'
-  }*/
+    conclusion: { attribute: 'tolerance', value: 'high' }
+  }
 ];
 
 module.exports = KB;

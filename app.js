@@ -1,5 +1,5 @@
 const readline = require('readline-sync');
-const kb = require('./data/plants.js');
+const kb = require('./data/etfs.js');
 
 const forwardChain = function(assertions) {
   // Select the first rule.
