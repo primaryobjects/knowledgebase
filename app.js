@@ -42,9 +42,6 @@ const backChain = function(goal, assertions) {
   assertion = assertion.length ? assertion[0] : null;
 
   if (!assertion) {
-    // Go back to the first rule.
-    ruleIndex = 0;
-
     while (!assertion && ruleIndex < kb.length) {
       const rule = kb[ruleIndex];
 
