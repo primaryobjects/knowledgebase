@@ -55,9 +55,8 @@ const backChain = function(goal, assertions) {
         let isPremiseAssertionTrue = true;
 
         while (!allPremisesTrue && isPremiseAssertionTrue) {
-          const nextGoal = premise;
-
-          trueAssertion = backChain(nextGoal, assertions);
+          // Satisfy the current premise as the next goal.
+          trueAssertion = backChain(premise, assertions);
 
           // Add the assertion to the assertion list.
           trueAssertion && assertions.push(trueAssertion);
