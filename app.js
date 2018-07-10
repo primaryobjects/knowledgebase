@@ -1,6 +1,5 @@
 const readline = require('readline-sync');
 const kb = require('./kb-plants.js');
-const verbose = false;
 
 const forwardChain = function(assertions) {
   // Select the first rule.
@@ -38,11 +37,8 @@ const backChain = function(goal, assertions) {
   assertions = assertions || [ goal ];
 
   // If there is an assertion with goal as its attribute.
-  verbose && console.log(`Current goal: ${JSON.stringify(goal)}`);
-  verbose && console.log(`Current assertions: ${JSON.stringify(assertions)}`);
   let assertion = assertions.filter(assertion => assertion.attribute === goal.attribute && assertion.value);
   assertion = assertion.length ? assertion[0] : null;
-  verbose && console.log(`Found assertion: ${JSON.stringify(assertion)}`);
 
   if (!assertion) {
     // Go back to the first rule.
@@ -57,40 +53,27 @@ const backChain = function(goal, assertions) {
         let premise = rule.premises[premiseIndex];
         let isPremiseAssertionTrue = true;
 
-        verbose && console.log(`Rule conclusion: ${JSON.stringify(rule.conclusion)}`);
-
         while (!allPremisesTrue && isPremiseAssertionTrue) {
           const nextGoal = premise;
 
-          verbose && console.log(`Calling backChain for goal ${JSON.stringify(nextGoal)}`);
           trueAssertion = backChain(nextGoal, assertions);
-          verbose && console.log(`trueAssertion: ${JSON.stringify(trueAssertion)}`);
 
           // Add the assertion to the assertion list.
           assertions.push(trueAssertion);
 
-          verbose && console.log(`${JSON.stringify(premise)} === ${JSON.stringify(trueAssertion)}`)
-
           // Is the trueAssertion equal to the premise?
           isPremiseAssertionTrue = JSON.stringify(premise) === JSON.stringify(trueAssertion);
           if (isPremiseAssertionTrue) {
-            verbose && console.log(`${premiseIndex + 1} < ${rule.premises.length}`);
-
             if (++premiseIndex < rule.premises.length) {
               premise = rule.premises[premiseIndex];
-
-              verbose && console.log(allPremisesTrue);
-              verbose && console.log(`Using new premise ${JSON.stringify(premise)}`);
             }
             else {
-              verbose && console.log('All premises true!');
               allPremisesTrue = true;
             }
           }
         }
 
         if (allPremisesTrue) {
-          verbose && console.log(`New assertion: ${JSON.stringify(rule.conclusion)}`);
           assertion = rule.conclusion;
         }
       }
@@ -100,6 +83,7 @@ const backChain = function(goal, assertions) {
     }
 
     if (!assertion) {
+      // Use an existing assertion if it exists, otherwise prompt for assertion value from user.
       let existingAssertion = assertions.filter(a => a.attribute === goal.attribute);
       existingAssertion = existingAssertion.length ? existingAssertion[0] : null;
       if (existingAssertion) {
@@ -111,13 +95,12 @@ const backChain = function(goal, assertions) {
         assertion = { attribute: goal.attribute, value }; // Enter new assertion for the type and value specified by the user.
       }
     }
-    else {
+    /*else {
       const index = assertions.indexOf(a => a.attribute === assertion.attribute && !a.value);
       if (index > -1) {
-        verbose && console.log('Updating value!');
         assertions[index].value = assertion.value;
       }
-    }
+    }*/
   }
 
   return assertion;
