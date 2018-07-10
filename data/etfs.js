@@ -1,77 +1,86 @@
 const KB = [
+  /* Setting up stock/bond percentages. */
   {
     premises: [
-      { attribute: 'class', value: 'bond' },
-      { attribute: 'category', value: 'treasury' },
-      { attribute: 'risk', value: 'low' },
-      { attribute: 'dividend', value: 'yes' }
+      { attribute: 'tolerance', value: 'low' }
     ],
-    conclusion: { attribute: 'fund', value: 'BND' }
+    conclusion: { attribute: 'bonds', value: '100' }
   },
   {
     premises: [
-      { attribute: 'class', value: 'bond' },
-      { attribute: 'category', value: 'treasury' },
-      { attribute: 'risk', value: 'high' },
-      { attribute: 'dividend', value: 'yes' }
+      { attribute: 'tolerance', value: 'moderate' }
     ],
-    conclusion: { attribute: 'fund', value: 'JNK' }
+    conclusion: { attribute: 'bonds', value: '50' }
   },
   {
     premises: [
-      { attribute: 'class', value: 'bond' },
-      { attribute: 'risk', value: 'low' },
-      { attribute: 'dividend', value: 'yes' }
+      { attribute: 'tolerance', value: 'moderate' }
+    ],
+    conclusion: { attribute: 'stocks', value: '50' }
+  },
+  {
+    premises: [
+      { attribute: 'tolerance', value: 'high' },
+      { attribute: 'tax free', value: 'no' }
+    ],
+    conclusion: { attribute: 'stocks', value: '100' }
+  },
+  {
+    premises: [
+      { attribute: 'tolerance', value: 'high' },
+      { attribute: 'tax free', value: 'yes' }
+    ],
+    conclusion: { attribute: 'bonds', value: '100' }
+  },
+
+  /* Setting up fund selection. */
+  {
+    premises: [
+      { attribute: 'tolerance', value: 'low' },
+      { attribute: 'tax free', value: 'yes' }
     ],
     conclusion: { attribute: 'fund', value: 'MUB' }
   },
   {
     premises: [
-      { attribute: 'class', value: 'bond' },
-      { attribute: 'category', value: 'municipal' },
-      { attribute: 'risk', value: 'low' },
-      { attribute: 'dividend', value: 'yes' }
+      { attribute: 'tolerance', value: 'moderate' },
+      { attribute: 'tax free', value: 'yes' }
+    ],
+    conclusion: { attribute: 'fund', value: 'MUB' }
+  },
+  {
+    premises: [
+      { attribute: 'tolerance', value: 'high' },
+      { attribute: 'tax free', value: 'yes' }
     ],
     conclusion: { attribute: 'fund', value: 'HYD' }
   },
   {
     premises: [
-      { attribute: 'class', value: 'stock' },
-      { attribute: 'category', value: 'large blend' },
-      { attribute: 'risk', value: 'high' },
-      { attribute: 'size', value: 'large' },
-      { attribute: 'valuation', value: 'blend' }
+      { attribute: 'bonds', value: '100' },
+      { attribute: 'tax free', value: 'no' }
+    ],
+    conclusion: { attribute: 'fund', value: 'BND' }
+  },
+  {
+    premises: [
+      { attribute: 'bonds', value: '50' },
+      { attribute: 'tax free', value: 'no' }
+    ],
+    conclusion: { attribute: 'fund', value: 'BND' }
+  },
+  {
+    premises: [
+      { attribute: 'stocks', value: '100' }
     ],
     conclusion: { attribute: 'fund', value: 'SPY' }
   },
   {
     premises: [
-      { attribute: 'class', value: 'stock' },
-      { attribute: 'category', value: 'large value' },
-      { attribute: 'risk', value: 'moderate' },
-      { attribute: 'size', value: 'large' },
-      { attribute: 'valuation', value: 'value' }
+      { attribute: 'stocks', value: '50' }
     ],
-    conclusion: { attribute: 'fund', value: 'SDY' }
+    conclusion: { attribute: 'fund', value: 'SPY' }
   },
-  {
-    premises: [
-      { attribute: 'fund', value: 'MUB' }
-    ],
-    conclusion: { attribute: 'tolerance', value: 'low' }
-  },
-  {
-    premises: [
-      { attribute: 'fund', value: 'MUB' }
-    ],
-    conclusion: { attribute: 'category', value: 'municipal' }
-  },
-  {
-    premises: [
-      { attribute: 'fund', value: 'SPY' }
-    ],
-    conclusion: { attribute: 'tolerance', value: 'high' }
-  }
 ];
 
 module.exports = KB;
