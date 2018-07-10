@@ -12,7 +12,7 @@ node app.js
 
 ### First Example
 
-The first example demonstrates forward-chaining. To use the example, provide the following inputs as an example:
+The first example demonstrates forward-chaining. To use the example, provide the following example inputs below.
 
 ```
 stem
@@ -23,9 +23,21 @@ one main trunk
 yes
 broad and flat
 no
+<press enter two times>
 ```
 
-You should see the output:
+You should see the following output.
+
+```js
+[ { attribute: 'stem', value: 'woody' },
+  { attribute: 'position', value: 'upright' },
+  { attribute: 'one main trunk', value: 'yes' },
+  { attribute: 'broad and flat', value: 'no' },
+  { attribute: 'type', value: 'tree' },
+  { attribute: 'class', value: 'gymnosperm' } ]
+```
+
+The first 4 items are our provided inputs. The second two are new attributes deduced from the knowledge-base.
 
 ```
 type is tree
@@ -36,7 +48,7 @@ Why? The first output of `tree` is because of the original input attributes all 
 
 ### Second Example
 
-The second example demonstrates backward-chaining. To use the example, provide the following inputs as an example:
+The second example demonstrates backward-chaining. To use the example, provide the following example inputs below.
 
 ```
 class
