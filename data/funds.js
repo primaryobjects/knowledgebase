@@ -2,10 +2,11 @@
 
 :- dynamic type/1, dividend/1, quality/1, highyield/1, category/1, sector/1, fund/1.
 
-select :- type(stock), dividend(yes), quality(rising), highyield(yes), assert(fund(sdy)).
-select :- type(stock), dividend(yes), quality(rising), highyield(no), assert(fund(pfm)).
-select :- type(bond), category(short), sector(broad), assert(fund(bsv)).
-select :- type(bond), category(medium), sector(broad), assert(fund(bnd)).
+%select :- type(stock), dividend(yes), quality(rising), highyield(yes), assert(fund(sdy)).
+fund(sdy) :- type(stock), dividend(yes), quality(rising), highyield(yes).
+fund(pfm) :- type(stock), dividend(yes), quality(rising), highyield(no).
+fund(bsv) :- type(bond), category(short), sector(broad).
+fund(bnd) :- type(bond), category(medium), sector(broad).
 
 % By adding this fact, when we set highyield=yes, we also get dividend=yes, thus leading us to fund(sdy).
 dividend(yes) :- highyield(yes).
@@ -14,8 +15,10 @@ type(stock).
 %dividend(yes).
 quality(rising).
 highyield(yes).
+category(none).
+sector(none).
 
-?- select, fund(Which)
+?- fund(Which)
 
 % Output: Which = sdy
 */
