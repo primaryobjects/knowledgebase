@@ -1,5 +1,5 @@
-An Expert System Using Logic-Based Artificial Intelligence
-==========================================================
+Expert System Using Logic-Based Artificial Intelligence
+=======================================================
 
 This project is an example of building an expert system, using a knowledge-base constructed with logic-based artificial intelligence, also called symbolic AI.
 
