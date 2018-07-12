@@ -81,7 +81,7 @@ One type of system that can be created with logical AI is an expert system.
 
 An expert system contains its knowledge usually in the form of a database, or, knowledge-base. By decoupling the knowledge from the actual software algorithm, an expert system can navigate through the database of facts to determine classifications and make decisions. The database is typically created by a human expert, and as such, the extent of knowledge that an expert system contains is typically confined to that of the human providing the content.
 
-For example, a medical diagnosis expert system may contain a knowledge-base consisting of many different facts about diseases, symptoms, and conditions. The data can usually be represented by a tree hierarchy, from which one could navigate through the brances of symptoms until a particular conclusion is reached (i.e., disease or condition). By using a logic-based AI algorithm on the knowledge-base, such as forward-chaining and backward-chaining, an algorithm can intelligently traverse the tree, narrowing down the conclusion based upon the patient's provided symptoms.
+For example, a medical diagnosis expert system may contain a knowledge-base consisting of many different facts about diseases, symptoms, and conditions. The data can usually be represented by a tree hierarchy, from which one could navigate through the branches of symptoms until a particular conclusion is reached (i.e., disease or condition). By using a logic-based AI algorithm on the knowledge-base, such as forward-chaining and backward-chaining, an algorithm can intelligently traverse the tree, narrowing down the conclusion based upon the patient's provided symptoms.
 
 ### Forward Chaining
 
