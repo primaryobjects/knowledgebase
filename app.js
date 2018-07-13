@@ -56,7 +56,7 @@ const backChain = function(goal, assertions) {
           trueAssertion = backChain(premise, assertions);
 
           // Add the assertion to the assertion list.
-          trueAssertion && assertions.push(trueAssertion);
+          trueAssertion && !assertions.some(assertion => assertion.attribute === trueAssertion.attribute && assertion.value === trueAssertion.value) && assertions.push(trueAssertion);
 
           // Is the trueAssertion equal to the premise?
           isPremiseAssertionTrue = JSON.stringify(premise) === JSON.stringify(trueAssertion);
