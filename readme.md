@@ -3,6 +3,8 @@ Expert System Using Logic-Based Artificial Intelligence
 
 This project is an example of building an expert system, using a knowledge-base constructed with logic-based artificial intelligence, also called symbolic AI.
 
+See also [Logical-Based Artificial Intelligence and Expert Systems](http://www.primaryobjects.com/2018/07/23/logical-based-artificial-intelligence-and-expert-systems/)
+
 ## Usage
 
 ```bash
